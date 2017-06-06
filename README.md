@@ -17,3 +17,7 @@ $ ./node_modules/.bin/http-server
 * ISO 3166-1 numeric 
 * ISO 3166-2
 * ISO 3166-2:TW
+
+# Note
+
+* google geochart does not support region: TW, resolution: provinces

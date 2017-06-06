@@ -8,17 +8,18 @@
       function drawRegionsMap() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Country', 'Popularity'],
-          ['Germany', 200],
-          ['United States', 300],
-          ['Brazil', 400],
-          ['Canada', 500],
-          ['France', 600],
-          ['RU', 700]
+          ['State', 'Popularity'],
+          ['US-AL', 200],
+          ['US-AK', 300],
+          ['US-AZ', 400],
+          ['US-AR', 500],
+          ['US-CA', 600],
+          ['US-CO', 700]
         ]);
 
         var options = {
-          region: 'US'
+          region: 'US',
+          resolution: 'provinces'
         };
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
