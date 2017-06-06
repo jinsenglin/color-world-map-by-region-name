@@ -23,3 +23,4 @@ $ ./node_modules/.bin/http-server
 # Note
 
 * google geochart does not support region: TW, resolution: provinces
+* datamaps only support scope: world, or scope: usa
