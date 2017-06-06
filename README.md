@@ -17,6 +17,8 @@ $ ./node_modules/.bin/http-server
 * ISO 3166-1 numeric 
 * ISO 3166-2
 * ISO 3166-2:TW
+* ISO 3166-2:CN
+* ISO 3166-2:US
 
 # Note
 
