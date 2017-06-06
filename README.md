@@ -1,6 +1,9 @@
 # Setup local development environment
 
 ```
+$ source $(brew --prefix nvm)/nvm.sh
+$ nvm install v6.10.0
+$ nvm use --delete-prefix v6.10.0
 $ npm install http-server
 $ ./node_modules/.bin/http-server
 ``` 
