@@ -20,7 +20,14 @@ $ ./node_modules/.bin/http-server
 * ISO 3166-2:CN
 * ISO 3166-2:US
 
+# Geo Data Format
+
+* GeoJSON
+* TopoJSON
+* ESRI Shapefile (.shp)
+
 # Note
 
 * google geochart does not support region: TW, resolution: provinces
+* google geochart does not support any custom geo data
 * datamaps only support scope: world, or scope: usa
