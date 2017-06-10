@@ -11,17 +11,38 @@
 
                 // load topojson data
                 d3.json(topojson_file, function(topojson_data) {
+                    console.log(topojson_data);
 
-                    // project
+                    // make projection object
+                    var center = [122, 23.25];
+                    console.log(center);
+
+                    var scale = 6000;
+                    console.log(scale);
+
+                    var offset = [400, 300];
+                    console.log(offset);
+
+                    var projection = d3.geo.mercator().scale(scale).center(center).translate(offset);
+                    console.log(projection);
+
                     // make path object
-                    // make feature object
-                    // bind data
+                    var path = d3.geo.path().projection(projection);
+                    console.log(path);
 
-                    d3.select("body").append("p").text("Hello World");
+                    // make feature object
+                    var feature = topojson.feature(topojson_data, topojson_data.objects.map).features;
+                    console.log(feature);
+
+                    // make svg element
+                    var svg = d3.select("body").append("svg").attr("width", "100%").attr("height", "500px");
+                    console.log(svg);
+                    
+                    // bind data
+                    svg.selectAll("path").data(feature).enter().append("path").attr("d", path);
                 });
             });
         </script>
     </head>
-    <body>
-    </body>
+    <body></body>
 </html>
