@@ -1,4 +1,6 @@
-Forked from https://github.com/infographicstw/example/tree/gh-pages/502
+Forked from:
+* https://github.com/infographicstw/example/tree/gh-pages/502
+* https://github.com/jason2506/Taiwan.TopoJSON
 
 原始 SHP 檔案的出處:
 
