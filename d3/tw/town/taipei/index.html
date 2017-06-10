@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Color TW County Map by D3.JS</title>
+        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="//d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var topojson_file = "../../data/shp/topojson/towns/towns-63.json";
+
+                // load topojson data
+                d3.json(topojson_file, function(topojson_data) {
+                    console.log(topojson_data);
+
+                    // make svg element
+                    var w = 800;
+                    var h = 600;
+                    var svg = d3.select("body").append("svg").attr("width", w)
+                                                             .attr("height", h);
+
+                    // make border for the svg element
+                    svg.append("rect").attr("x", 0)
+                                      .attr("y", 0)
+                                      .attr("height", h)
+                                      .attr("width", w)
+                                      .style("stroke", "black")
+                                      .style("fill", "none")
+                                      .style("stroke-width", "1px");
+
+                    // make projection object
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#mercator
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#scale
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#center
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#translate
+                    var center = [121, 23.5];
+                    var scale = 8000;
+                    var offset = [w/2, h/2];
+                    var projection = d3.geo.mercator().scale(scale).center(center).translate(offset);
+                    console.log(projection);
+
+                    // make path object
+                    var path = d3.geo.path().projection(projection);
+                    console.log(path);
+
+                    // make feature object
+                    var feature = topojson.feature(topojson_data, topojson_data.objects.map).features;
+                    console.log(feature);
+
+                    // bind data
+                    svg.selectAll("path").data(feature).enter().append("path").attr("d", path);
+                });
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
