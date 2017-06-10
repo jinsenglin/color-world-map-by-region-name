@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Color TW County Map by D3.JS</title>
+        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="//d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var topojson_file = "../data/shp/topojson/counties.json";
+
+                // load topojson data
+                d3.json(topojson_file, function(topojson_data) {
+
+                    // project
+                    // make path object
+                    // make feature object
+                    // bind data
+
+                    d3.select("body").append("p").text("Hello World");
+                });
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
