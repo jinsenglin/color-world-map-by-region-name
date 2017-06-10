@@ -15,14 +15,8 @@
 
                     // make projection object
                     var center = [122, 23.25];
-                    console.log(center);
-
                     var scale = 6000;
-                    console.log(scale);
-
                     var offset = [400, 300];
-                    console.log(offset);
-
                     var projection = d3.geo.mercator().scale(scale).center(center).translate(offset);
                     console.log(projection);
 
@@ -35,9 +29,20 @@
                     console.log(feature);
 
                     // make svg element
-                    var svg = d3.select("body").append("svg").attr("width", "100%").attr("height", "500px");
-                    console.log(svg);
-                    
+                    var w = "800px";
+                    var h = "600px";
+                    var svg = d3.select("body").append("svg").attr("width", w)
+                                                             .attr("height", h);
+
+                    // make border for the svg element
+                    svg.append("rect").attr("x", 0)
+                                      .attr("y", 0)
+                                      .attr("height", h)
+                                      .attr("width", w)
+                                      .style("stroke", "black")
+                                      .style("fill", "none")
+                                      .style("stroke-width", "1px");
+
                     // bind data
                     svg.selectAll("path").data(feature).enter().append("path").attr("d", path);
                 });
