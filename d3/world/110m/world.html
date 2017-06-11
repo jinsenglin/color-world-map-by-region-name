@@ -2,6 +2,14 @@
     <head>
         <meta charset="utf-8">
         <title>Color World Map by D3.JS</title>
+        <style>
+            .graticule {
+                fill: none;
+                stroke: #777;
+                stroke-width: .5px;
+                stroke-opacity: .5;
+            }
+        </style>
         <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
         <script type="text/javascript" src="//d3js.org/topojson.v1.min.js"></script>
         <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
@@ -48,6 +56,9 @@
                     // make path object using d3 path generation function
                     var path = d3.geo.path().projection(projection);
                     console.log(path);
+
+                    // make grids for the svg element
+                    svg.append("path").datum(d3.geo.graticule()).attr("class", "graticule").attr("d", path);
 
                     // make feature object
                     var feature = topojson.feature(topojson_data, topojson_data.objects.countries).features;
