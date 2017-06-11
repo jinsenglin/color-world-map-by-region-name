@@ -18,10 +18,14 @@ topojson -s 0.0000001 -o town.json -p --shapefile-encoding big5 town.shp
 topojson -s 0.0000001 -o village.json -p --shapefile-encoding big5 village.shp
 ```
 
-d3js scale, transform and translate
+D3.js scale, transform and translate
 
 * https://stackoverflow.com/questions/13274151/d3js-scale-transform-and-translate
 
-let's make a map
+Let's make a map
 
 * https://bost.ocks.org/mike/map/
+
+Center a map in D3.js given a GeoJSON object
+
+* https://stackoverflow.com/questions/14492284/center-a-map-in-d3-given-a-geojson-object
