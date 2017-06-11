@@ -38,6 +38,11 @@ $ ./node_modules/.bin/http-server
 * UTM
 * TM2
 
+# Projection
+
+* Transverse Mercator (TM)
+* Mollweide
+
 # Note
 
 * google geochart does not support region: TW, resolution: provinces
