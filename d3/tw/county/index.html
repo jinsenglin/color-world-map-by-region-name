@@ -86,6 +86,7 @@
 
                     // bind data
                     // svg.selectAll("path").data(feature).enter().append("path").attr("d", path); // simple (no color)
+                    // svg.selectAll("path").data(feature).enter().append("path").attr({d: path, fill: "#f00"}); // simple (one color)
                     svg.selectAll("path").data(feature).enter().append("path").attr({
                         d: path,
                         fill: function(d) {return color(d.region_data);}
