@@ -20,7 +20,7 @@ $ ./node_modules/.bin/http-server
 * ISO 3166-2:CN
 * ISO 3166-2:US
 
-# Geo Data Format
+# Geo Data File Format
 
 * GeoJSON
 * TopoJSON
@@ -31,6 +31,12 @@ $ ./node_modules/.bin/http-server
 * WGS84
 * TWD67
 * TWD97
+
+# Format/Grid
+
+* Latitude and Longitude
+* UTM
+* TM2
 
 # Note
 
