@@ -43,14 +43,16 @@
                     var span = d3.select("body").append("span").attr("id", "message");
 
                     // make orthographic projection object
-                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#mercator
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#orthographic
                     // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#scale
                     // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#center
                     // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#translate
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#clipAngle
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#rotate
                     // var center = [121, 23.5];
                     var scale = 280;
                     var offset = [w/2, h/2];
-                    var projection = d3.geo.orthographic().scale(scale).translate(offset);
+                    var projection = d3.geo.orthographic().scale(scale).translate(offset).clipAngle(90).rotate([180, 0, 0]);
                     console.log(projection);
 
                     // make path object using d3 path generation function
