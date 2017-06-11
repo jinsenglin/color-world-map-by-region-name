@@ -52,7 +52,7 @@
                     // var center = [121, 23.5];
                     var scale = 280;
                     var offset = [w/2, h/2];
-                    var projection = d3.geo.orthographic().scale(scale).translate(offset).clipAngle(90).rotate([0, 0, 0]);
+                    var projection = d3.geo.orthographic().scale(scale).translate(offset).clipAngle(90).rotate([180, 0, 0]);
                     console.log(projection);
 
                     // make path object using d3 path generation function
