@@ -95,6 +95,8 @@
                         fill: function(d) {return color(d.region_data);}
                     }).on("mouseover", function(d) {
                         $("#message").text(d.properties.name);
+                    }).on("mouseout", function(d) {
+                        $("#message").text("");
                     });
                 });
             });
