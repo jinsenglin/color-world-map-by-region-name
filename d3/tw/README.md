@@ -21,3 +21,7 @@ topojson -s 0.0000001 -o village.json -p --shapefile-encoding big5 village.shp
 d3js scale, transform and translate
 
 * https://stackoverflow.com/questions/13274151/d3js-scale-transform-and-translate
+
+let's make a map
+
+* https://bost.ocks.org/mike/map/
