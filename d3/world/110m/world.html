@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Color World Map by D3.JS</title>
+        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="//d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var topojson_file = "110m.json";
+                var region_data = {};
+
+                // load topojson data
+                d3.json(topojson_file, function(topojson_data) {
+                    console.log(topojson_data);
+
+                    // make svg element
+                    var w = 800;
+                    var h = 600;
+                    var svg = d3.select("body").append("svg").attr("width", w)
+                                                             .attr("height", h);
+
+                    // make border for the svg element
+                    svg.append("rect").attr("x", 0)
+                                      .attr("y", 0)
+                                      .attr("height", h)
+                                      .attr("width", w)
+                                      .style("stroke", "black")
+                                      .style("fill", "none")
+                                      .style("stroke-width", "1px");
+
+                    // make span element for displaying message
+                    var span = d3.select("body").append("span").attr("id", "message");
+
+                    // make mercator projection object
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#mercator
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#scale
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#center
+                    // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#translate
+                    // var center = [121, 23.5];
+                    var scale = 90;
+                    var offset = [w/2, h/2];
+                    var projection = d3.geo.mercator().scale(scale).translate(offset);
+                    console.log(projection);
+
+                    // make path object using d3 path generation function
+                    var path = d3.geo.path().projection(projection);
+                    console.log(path);
+
+                    // make feature object
+                    var feature = topojson.feature(topojson_data, topojson_data.objects.countries).features;
+                    console.log(feature);
+
+                    // extend feature object with region data
+                    /*
+                    for (idx=feature.length-1; idx>=0; idx--) {
+                        feature[idx].region_data = region_data[feature[idx].properties.name];
+                        console.log(feature[idx].region_data);
+                    }*/
+
+                    // make color object
+                    /*
+                    var min_index = 1;
+                    var max_index = 22;
+                    var min_color = "#0f0";
+                    var max_color = "#00f";
+                    var color = d3.scale.linear().domain([min_index, max_index]).range([min_color, max_color]);*/
+
+                    // bind data
+                    svg.selectAll("path").data(feature).enter().append("path").attr("d", path); // simple (no color)
+                    // svg.selectAll("path").data(feature).enter().append("path").attr({d: path, fill: "#f00"}); // simple (one color)
+                    /*
+                    svg.selectAll("path").data(feature).enter().append("path").attr({
+                        d: path,
+                        fill: function(d) {return color(d.region_data);}
+                    }).on("mouseover", function(d) {
+                        $("#message").text(d.properties.name);
+                    }).on("mouseout", function(d) {
+                        $("#message").text("");
+                    });*/
+                });
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
