@@ -52,6 +52,9 @@
                                       .style("fill", "none")
                                       .style("stroke-width", "1px");
 
+                    // make span element for displaying message
+                    var span = d3.select("body").append("span").attr("id", "message");
+
                     // make mercator projection object
                     // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#mercator
                     // https://github.com/d3/d3-3.x-api-reference/blob/master/Geo-Projections.md#scale
@@ -90,6 +93,8 @@
                     svg.selectAll("path").data(feature).enter().append("path").attr({
                         d: path,
                         fill: function(d) {return color(d.region_data);}
+                    }).on("mouseover", function(d) {
+                        $("#message").text(d.properties.name);
                     });
                 });
             });
