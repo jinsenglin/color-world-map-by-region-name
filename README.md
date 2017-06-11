@@ -26,6 +26,12 @@ $ ./node_modules/.bin/http-server
 * TopoJSON
 * ESRI Shapefile (.shp)
 
+# Datum
+
+* WGS84
+* TWD67
+* TWD97
+
 # Note
 
 * google geochart does not support region: TW, resolution: provinces
