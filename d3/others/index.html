@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dsiplay CSV Data by D3.JS</title>
+        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="//d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var csv_file = "data.csv";
+
+                // reference: http://learnjsdata.com/read_data.html
+                // load csv data
+                d3.csv(csv_file, function(error, csv_data) {
+                    console.log(csv_data);
+                    var data = csv_data;
+                    /* var data = [ 
+                               {x:10,y:10},
+                               {x:50,y:100},
+                               {x:60,y:50},
+                               {x:100,y:30}
+                               ];*/
+
+                    // make svg element
+                    var w = 800;
+                    var h = 600;
+                    var svg = d3.select("body").append("svg").attr("width", w)
+                                                             .attr("height", h);
+
+                    // make border for the svg element
+                    svg.append("rect").attr("x", 0)
+                                      .attr("y", 0)
+                                      .attr("height", h)
+                                      .attr("width", w)
+                                      .style("stroke", "black")
+                                      .style("fill", "none")
+                                      .style("stroke-width", "1px");
+
+                    // make line object
+                    var line = d3.svg.line()
+                                     .x(function(d) {
+                                       return d.x;
+                                     })
+                                     .y(function(d) {
+                                       return d.y;
+                                     })
+                                     .interpolate('linear');
+                    // bind data
+                    svg.append("path").attr({
+                        'd': line(data),
+                        'y': 0,
+                        'stroke': '#000',
+                        'stroke-width': '5px',
+                        'fill': 'none'
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
