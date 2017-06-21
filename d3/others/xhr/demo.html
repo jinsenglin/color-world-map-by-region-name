@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dsiplay JSON Data Returned from REST API Server by D3.JS</title>
+        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="//d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                setInterval(function(){
+                    // clear
+                    $("#div1").html("");
+
+                    $.ajax({url: "https://raw.githubusercontent.com/jinsenglin/fake-rest-api-server/master/stat/count",
+                            cache: false,
+                            success: function(single_str_value){
+                            // update
+                            $("#div1").html("NT$ " + d3.format(",.3f")(single_str_value));
+                    }});
+
+                }, 5000);
+            });
+        </script>
+        <style>
+            div {
+                font-size: 48px;
+            }
+        </style>
+    </head>
+    <body><div id="div1"></div></body>
+</html>
